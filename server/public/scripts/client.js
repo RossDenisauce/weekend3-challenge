@@ -4,6 +4,7 @@ function onStart(){
     console.log('JQ');
     getTask();
     $('#submitTask').on('click', addTask);
+    $('#taskSpace').on('click', '.deleteButton', deleteTask);
 }
 
 function addTask(){
@@ -37,19 +38,33 @@ function getTask(){
 
 function appendTask(task){
     $('#taskSpace').empty();
-    for (let i = 0; i < task.length; i++) {  
-        $('#taskSpace').append(`
-            <li class="task">
-            <p>Who's Task: ${task[i].author}</p> 
+    for (let i = 0; i < task.length; i++) { 
+        let $row = $('<li class="task">');
+        $row.data('id', task[i].id);
+        $row.append(`
+            <p>Who's Task: ${task[i].author}</p>
             <p>Task: ${task[i].description}</p>
-            <p>Completed? ${task[i].completion}</p>
-            </li>
+            <p>Completed? ${task[i].completion}</p>  
             <select class="completionDropdown">
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
             </select>
             <button class="submitComplete">Submit Completion</button>
-            <button class="deleteButon">Delete</button>
-        `);
+            <button class="deleteButton">Delete</button>`
+        );
+        $('#taskSpace').append($row);
     }
+}
+
+function deleteTask(){
+    let task = $(this).closest('li').data('id');
+    console.log(task);
+    $.ajax({
+        method: 'DELETE',
+        url: '/tasks/' + task,
+        success: function(response){
+            console.log('task:', response);
+            getTask();
+        }
+    });
 }
