@@ -5,6 +5,7 @@ function onStart(){
     getTask();
     $('#submitTask').on('click', addTask);
     $('#taskSpace').on('click', '.deleteButton', deleteTask);
+    $('#taskSpace').on('click', '.submitComplete', updateTask);
 }
 
 function addTask(){
@@ -63,8 +64,24 @@ function deleteTask(){
         method: 'DELETE',
         url: '/tasks/' + task,
         success: function(response){
-            console.log('task:', response);
+            console.log('delete request:', response);
             getTask();
         }
     });
+}
+
+function updateTask(){
+    let task = $(this).closest('li').data('id');
+    let completion = $('.completionDropdown').val();
+    console.log(completion);
+    
+    $.ajax({
+        method: 'PUT',
+        url: '/tasks/' + task,
+        data: {completion: completion},
+        success: function(response){
+            console.log('update request:', response);
+            getTask();
+        }
+    })
 }
