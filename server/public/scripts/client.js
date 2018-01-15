@@ -72,7 +72,7 @@ function deleteTask(){
 
 function updateTask(){
     let task = $(this).closest('li').data('id');
-    let completion = $('.completionDropdown').val();
+    let completion = $(this).parent().children('select').val();
     console.log(completion);
     
     $.ajax({
