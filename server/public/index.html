@@ -6,19 +6,30 @@
     <title>Task Master</title>
     <script src="vendors/jquery.min.js"></script>
     <script src="scripts/client.js"></script>
-    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    <h1>Task Master</h1>
-    <div>
-        <h2>Input Task</h2>
-        <input type="text" id="authorInput" placeholder="Your Name Here"/>
-        <input type="text" id="taskInput" placeholder="Your Task Here"/>
-        <button id="submitTask">Submit Task</button>
-    </div>
-    <ul id="taskSpace" class="tasks">
-
-    </ul>
-
+    <!-- <div class="container">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-5"> -->
+                <div class="header">
+                <h1>Task Master</h1>
+                <h2>Input Task</h2>
+                <div class="inputs">
+                        <input type="text" id="authorInput" placeholder="Your Name Here"/>
+                        <input type="text" id="taskInput" placeholder="Your Task Here"/>
+                        <button class="btn btn-success"id="submitTask">Submit Task</button>
+                </div>
+                </div>
+            <!-- </div>
+        </div> -->
+        <!-- <div class="row">
+            <div class="col-md-offset-1 col-md-7"> -->
+                <ul id="taskSpace" class="tasks"></ul>
+            <!-- </div>
+        </div>
+    </div> -->
 </body>
 </html>

@@ -40,9 +40,13 @@ function getTask(){
 function appendTask(task){
     $('#taskSpace').empty();
     for (let i = 0; i < task.length; i++) { 
-        let $row = $('<li class="task">');
+        if(task[i].completion == 'Yes'){
+            var $row = $('<li class="taskDone">');
+        } else{
+            var $row = $('<li class="task">');
+        }
         $row.data('id', task[i].id);
-        $row.append(`
+            $row.append(`
             <p>Who's Task: ${task[i].author}</p>
             <p>Task: ${task[i].description}</p>
             <p>Completed? ${task[i].completion}</p>  
@@ -50,8 +54,8 @@ function appendTask(task){
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
             </select>
-            <button class="submitComplete">Submit Completion</button>
-            <button class="deleteButton">Delete</button>`
+            <button class="btn btn-primary submitComplete">Submit Completion</button>
+            <button class="btn btn-danger deleteButton">Delete</button>`
         );
         $('#taskSpace').append($row);
     }
